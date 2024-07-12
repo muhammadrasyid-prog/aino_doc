@@ -32,8 +32,8 @@ export class AccessGroupComponent implements OnInit {
   role_uuid: string = '';
   role_code: string = '';
   role_title: string = '';
-  user_uuid: any;
-  user_name: any;
+  // user_uuid: any;
+  // user_name: any;
 
   constructor(
     private cookieService: CookieService,
@@ -69,8 +69,8 @@ export class AccessGroupComponent implements OnInit {
     })
       .then((response) => {
         console.log(response);
-        this.user_uuid = response.data.user_uuid;
-        this.user_name = response.data.user_name;
+        // this.user_uuid = response.data.user_uuid;
+        // this.user_name = response.data.user_name;
         this.role_code = response.data.role_code;
       })
       .catch((error) => {

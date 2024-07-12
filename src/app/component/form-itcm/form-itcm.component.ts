@@ -59,7 +59,7 @@ export class FormITCMComponent implements OnInit {
   dataListAllDoc: Documents[] = [];
   dataListAllProject: Projects[] = [];
 
-  document_uuid: string = '768e9241-c9ca-411f-8b91-4fb3ca7728bf';
+  document_uuid: string = '';
   document_name: string = '';
   form_ticket: string = '';
   form_ticket_update: string = '';
@@ -233,6 +233,17 @@ export class FormITCMComponent implements OnInit {
       });
   }
 
+  fetchDocumentUUID(): void {
+    axios.get(`${environment.apiUrl2}/form/itcm/code`)
+      .then(response => {
+        this.document_uuid = response.data.document_uuid;
+        console.log('Document UUID:', this.document_uuid);
+      })
+      .catch(error => {
+        console.error('Error fetching document UUID:', error);
+      });
+  }
+
   openModalAddFormITCM() {
     $('#addModalFormITCM').modal('show');
   }
@@ -264,17 +275,6 @@ export class FormITCMComponent implements OnInit {
       })
       .catch(error => {
         console.log(error.response.data.message);
-      });
-  }
-
-  fetchDocumentUUID(): void {
-    axios.get(`${environment.apiUrl2}/form/itcm/code`)
-      .then(response => {
-        this.document_uuid = response.data.document_uuid;
-        console.log('Document UUID:', this.document_uuid);
-      })
-      .catch(error => {
-        console.error('Error fetching document UUID:', error);
       });
   }
 

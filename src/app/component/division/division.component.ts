@@ -31,6 +31,9 @@ export class DivisionComponent implements OnInit {
   division_uuid: string = '';
   division_code: string = '';
   division_title: string = '';  
+  // user_uuid: any;
+  // user_name: any;
+  role_code: any;
 
   constructor(
     private cookieService: CookieService,
@@ -42,9 +45,6 @@ export class DivisionComponent implements OnInit {
   }
 
   dataListDivision: Division[] = [];
-  user_uuid: any;
-  user_name: any;
-  role_code: any;
 
   ngOnInit(): void {
     this.fetchDataDivision();
@@ -70,8 +70,8 @@ export class DivisionComponent implements OnInit {
     })
       .then((response) => {
         console.log(response);
-        this.user_uuid = response.data.user_uuid;
-        this.user_name = response.data.user_name;
+        // this.user_uuid = response.data.user_uuid;
+        // this.user_name = response.data.user_name;
         this.role_code = response.data.role_code;
       })
       .catch((error) => {

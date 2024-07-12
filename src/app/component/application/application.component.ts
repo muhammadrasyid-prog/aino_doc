@@ -34,8 +34,8 @@ export class ApplicationComponent implements OnInit {
   application_code: string = '';
   application_title: string = '';
   application_description: string = '';
-  user_uuid: any;
-  user_name: any;
+  // user_uuid: any;
+  // user_name: any;
   role_code: any;
   
   constructor(
@@ -78,8 +78,8 @@ export class ApplicationComponent implements OnInit {
     })
       .then((response) => {
         console.log(response);
-        this.user_uuid = response.data.user_uuid;
-        this.user_name = response.data.user_name;
+        // this.user_uuid = response.data.user_uuid;
+        // this.user_name = response.data.user_name;
         this.role_code = response.data.role_code;
       })
       .catch((error) => {
