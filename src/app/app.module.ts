@@ -24,6 +24,7 @@ import { Approutes } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SpinnerComponent } from './shared/spinner.component';
 import { LoginComponent } from './login/login.component';
+import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 
 
 
@@ -33,6 +34,7 @@ import { LoginComponent } from './login/login.component';
     AppComponent,
     SpinnerComponent,
     LoginComponent,
+    PagenotfoundComponent,
   ],
   imports: [
     CommonModule,
