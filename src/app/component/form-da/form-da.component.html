@@ -23,7 +23,7 @@
             <th scope="col">Dokumen</th>
             <th scope="col">Project</th>
             <th scope="col">Departemen</th>
-            <th scope="col">jenis_perubahan</th>
+            <th scope="col">Jenis Perubahan</th>
             <th scope="col">Action</th>
           </tr>
         </thead>
@@ -92,7 +92,7 @@
   </div>
 </div>
 
-
+<!-- add form DA -->
 <div class="modal fade" id="addModalFormDA" tabindex="-1" aria-labelledby="addModalFormDA" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-lg ">
     <div class="modal-content">
@@ -101,7 +101,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form #addForm="ngForm">
+        <form #addDaForm="ngForm">
           <h2 class="mb-3 display-7 text-center"><strong>Data Dokumen</strong></h2>
           <div class="mb-3">
             <label class="form-label">No. Tiket</label>
@@ -232,15 +232,17 @@
                 name="name4-position">
             </div>
           </div>
-
-          <button type="button" class="btn btn-primary" (click)="addFormDA()">Simpan</button>
+          <div class="modal-footer">           
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+            <button type="submit" class="btn btn-primary" (click)="addFormDA()" [disabled]="addDaForm.invalid">Simpan</button>
+          </div>
         </form>
       </div>
     </div>
   </div>
 </div>
 
-
+<!-- edit DA -->
 <div class="modal fade" id="updateModalDA" tabindex="-1" aria-labelledby="updateModalDA" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-lg">
     <div class="modal-content">
@@ -249,7 +251,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form #updateForm="ngForm">
+        <form #editDaForm="ngForm">
           <h2 class="mb-3 display-7 text-center"><strong>Data Formulir</strong></h2>
           <div class="mb-3">
             <label class="form-label">No. Tiket</label>
@@ -258,7 +260,7 @@
           </div>
           <div class="mb-3">
             <label class="form-label">Pilih Project</label>
-            <select name="project_uuid" id="" class="form-select" [(ngModel)]="project_uuid">
+            <select name="project_uuid" class="form-select" aria-label="Select Role" data-test="select_role" [(ngModel)]="project_uuid">
               <option value="" disabled selected>Pilih Project</option>
               <option *ngFor="let project of dataListAllProject" [value]="project.project_uuid">{{
                 project.project_name }}</option>
@@ -306,10 +308,11 @@
                 [(ngModel)]="rencana_rilis_perubahan_dan_implementasi">
             </div>
           </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+            <button type="submit" class="btn btn-primary" (click)="updateFormDA()" [disabled]="editDaForm.invalid">Simpan</button>
+          </div>
         </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" (click)="updateFormDA()">Simpan</button>
       </div>
     </div>
   </div>

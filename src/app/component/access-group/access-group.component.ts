@@ -30,9 +30,11 @@ export class AccessGroupComponent implements OnInit {
   searchText: string = '';
 
   profileRoleCode: string = '';
-  selectedRoleUuid: string = '';
-  selectedRoleCode: string = '';
-  selectedRoleTitle: string = '';
+  role_uuid: string = '';
+  role_code: string = '';
+  role_title: string = '';
+  // user_uuid: any;
+  // user_name: any;
 
   constructor(
     private cookieService: CookieService,
@@ -92,8 +94,8 @@ export class AccessGroupComponent implements OnInit {
 
   addRoleModal() {
     $('#addRoleModal').modal('show');
-    this.selectedRoleCode = '';
-    this.selectedRoleTitle = '';
+    this.role_code = '';
+    this.role_title = '';
   }
 
   addRole() {
@@ -101,8 +103,8 @@ export class AccessGroupComponent implements OnInit {
 
     axios.post(`${this.apiUrl}/superadmin/role/add`,
     { 
-      role_code: this.selectedRoleCode, 
-      role_title: this.selectedRoleTitle 
+      role_code: this.role_code, 
+      role_title: this.role_title 
     }, 
     {
       headers: {
@@ -117,9 +119,8 @@ export class AccessGroupComponent implements OnInit {
         icon: 'success'
       });
       $('#addRoleModal').modal('hide');
-      this.selectedRoleCode = '';
-      this.selectedRoleTitle = '';
-      this.fetchDataRoleGroup();
+      this.role_code = '';
+      this.role_title = '';
     })
     .catch((error) => {
       if(error.response.status === 400 || error.response.status === 422 || error.response.status === 500) {
@@ -142,9 +143,9 @@ export class AccessGroupComponent implements OnInit {
     axios.get(`${this.apiUrl}/role/${roleUuid}`)
     .then((response) => {
       const roleData = response.data;
-      this.selectedRoleUuid = roleData.role_uuid;
-      this.selectedRoleCode = roleData.role_code;
-      this.selectedRoleTitle = roleData.role_title;
+      this.role_uuid = roleData.role_uuid;
+      this.role_code = roleData.role_code;
+      this.role_title = roleData.role_title;
 
       $('#editRoleModal').modal('show');
     })
@@ -157,13 +158,10 @@ export class AccessGroupComponent implements OnInit {
 
   updateRole(): void {
     const token = this.cookieService.get('userToken');
-    const roleUuid = this.selectedRoleUuid;
+    const roleUuid = this.role_uuid;
 
     axios.put(`${this.apiUrl}/superadmin/role/update/${roleUuid}`,
-    { 
-      role_code: this.selectedRoleCode, 
-      role_title: this.selectedRoleTitle 
-    },
+    { role_code: this.role_code, role_title: this.role_title },
     {
       headers: {
         Authorization: `Bearer ${token}`

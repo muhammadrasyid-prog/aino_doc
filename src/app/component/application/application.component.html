@@ -40,6 +40,7 @@
   </div>
 </div>
 
+<!-- add application -->
 <div class="modal fade" id="addApplicationModal" tabindex="-1" aria-labelledby="addApplicationModalLabel"
   aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
@@ -49,7 +50,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form #applicationForm="ngForm">
+        <form #addApplicationForm="ngForm">
           <div class="mb-3">
             <label class="col-sm-3 col-form-label">Kode App.</label>
             <div class="col-sm-9">
@@ -71,19 +72,18 @@
                 [(ngModel)]="application_description" name="application_description" required>
             </div>
           </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+            <button type="submit" (click)="addApplication()" [disabled]="addApplicationForm.invalid" class="btn btn-primary">Simpan</button>
+          </div>
         </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-        <button type="button" (click)="addApplication()" class="btn btn-primary">Simpan</button>
       </div>
     </div>
   </div>
 </div>
 
-
-<div class="modal fade" id="editApplicationModal" tabindex="-1" aria-labelledby="editApplicationModalLabel"
-  aria-hidden="true">
+<!-- edit application -->
+<div class="modal fade" id="editApplicationModal" tabindex="-1" aria-labelledby="editApplicationModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
@@ -91,31 +91,30 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <div class="mb-3">
-          <label class="col-sm-3 col-form-label">Kode App.</label>
-          <div class="col-sm-9">
-            <input type="text" class="form-control" placeholder="Masukkan Kode Aplikasi" [(ngModel)]="application_code"
-              name="application_code" required>
+        <form #editApplicationForm="ngForm">
+          <div class="mb-3 row">
+            <label class="col-sm-3 col-form-label">Kode App.</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" placeholder="Masukkan Kode Aplikasi" [(ngModel)]="application_code" name="application_code" required>
+            </div>
           </div>
-        </div>
-        <div class="mb-3">
-          <label class="col-sm-3 col-form-label">Judul</label>
-          <div class="col-sm-9">
-            <input type="text" class="form-control" placeholder="Masukkan Judul" [(ngModel)]="application_title"
-              name="application_title" required>
+          <div class="mb-3 row">
+            <label class="col-sm-3 col-form-label">Judul</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" placeholder="Masukkan Judul" [(ngModel)]="application_title" name="application_title" required>
+            </div>
           </div>
-        </div>
-        <div class="mb-3">
-          <label class="col-sm-3 col-form-label">Deskripsi</label>
-          <div class="col-sm-9">
-            <input type="text" class="form-control" placeholder="Masukkan Deskripsi"
-              [(ngModel)]="application_description" name="application_description" required>
+          <div class="mb-3 row">
+            <label class="col-sm-3 col-form-label">Deskripsi</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" placeholder="Masukkan Deskripsi" [(ngModel)]="application_description" name="application_description" required>
+            </div>
           </div>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-        <button type="button" class="btn btn-primary" (click)="updateApplication()">Simpan</button>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+            <button type="submit" class="btn btn-primary" (click)="updateApplication()" [disabled]="editApplicationForm.invalid">Simpan Perubahan</button>
+          </div>
+        </form>
       </div>
     </div>
   </div>

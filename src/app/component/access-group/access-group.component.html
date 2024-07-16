@@ -27,7 +27,7 @@
               <td>{{ itemRole.role_title }}</td>
               <td>
                 <button class="btn btn-warning btn-sm" (click)="getSpecRole(itemRole.role_uuid)" *ngIf="profileRoleCode === 'SA'"><i
-                  class="bi bi-pencil-square text-dark"></i></button>
+                  class="bi bi-pencil-square"></i></button>
               </td>
             </ng-container>
           </tr>
@@ -37,6 +37,7 @@
   </div>
 </div>
 
+<!-- add access group -->
 <div class="modal fade" id="addRoleModal" tabindex="-1" aria-labelledby="addRoleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
@@ -45,30 +46,32 @@
         <button type="button" class="btn-close btn-lg" data-bs-dismiss="modal" aria-label="Close" ></button>
       </div>
       <div class="modal-body">
-        <form #roleForm="ngForm">
+        <form #addRoleForm="ngForm">
           <div class="mb-3">
             <label class="col-sm-3 col-form-label">Kode Role</label>
             <div class="col-sm-9">
-              <input type="text" class="form-control" placeholder="Masukkan Kode Akses" [(ngModel)]="selectedRoleCode"
+              <input type="text" class="form-control" placeholder="Masukkan Kode Akses" [(ngModel)]="role_code"
                 name="role_code" required>
             </div>
           </div>
           <div class="mb-3">
             <label class="col-sm-3 col-form-label">Nama Role</label>
             <div class="col-sm-9">
-              <input type="text" class="form-control" placeholder="Masukkan Nama Akses" [(ngModel)]="selectedRoleTitle"
+              <input type="text" class="form-control" placeholder="Masukkan Nama Akses" [(ngModel)]="role_title"
                 name="role_title" required>
             </div>
           </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+            <button type="submit" (click)="addRole()" class="btn btn-primary" [disabled]="addRoleForm.invalid">Simpan</button>
+          </div>
         </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" (click)="addRole()" class="btn btn-primary">Simpan</button>
       </div>
     </div>
   </div>
 </div>
 
+<!-- edit access group -->
 <div class="modal fade" id="editRoleModal" tabindex="-1" aria-labelledby="editRoleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
@@ -77,19 +80,19 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form #roleForm="ngForm">
+        <form #editRoleForm="ngForm">
           <div class="mb-3">
             <label class="col-sm-3 col-form-label">Kode Role</label>
             <div class="col-sm-9">
-              <input type="text" class="form-control" placeholder="Masukkan Kode Akses" [(ngModel)]="selectedRoleCode"
+              <input type="text" class="form-control" placeholder="Masukkan Kode Akses" [(ngModel)]="role_code"
                 name="role_code" required>
             </div>
           </div>
           <div class="mb-3">
             <label class="col-sm-3 col-form-label">Nama Role</label>
             <div class="col-sm-9">
-              <input type="text" class="form-control" placeholder="Masukkan Nama Akses" [(ngModel)]="selectedRoleTitle"
-                name="selectedRoleTitle" required>
+              <input type="text" class="form-control" placeholder="Masukkan Nama Akses" [(ngModel)]="role_title"
+                name="role_title" required>
             </div>
           </div>
           <!-- <div class="mb-3">
@@ -110,10 +113,11 @@
               <label class="form-check-label" for="updateCheckbox">Update</label>
             </div>
           </div> -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+            <button type="submit" (click)="updateRole()" class="btn btn-primary" [disabled]="editRoleForm.invalid">Simpan Perubahan</button>
+          </div>
         </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" (click)="updateRole()" class="btn btn-primary">Simpan</button>
       </div>
     </div>
   </div>

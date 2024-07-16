@@ -221,12 +221,16 @@ export class ProjectComponent implements OnInit {
   
 
   updateProject(): void {
-    const  productFormValue = this.product.value;
-    axios.put(`${environment.apiUrl2}/superadmin/project/update/${this.project_uuid}`, {
-      product_uuid: productFormValue.product_uuid,
+    const projectData = {
+      product_uuid: this.product_uuid,
+      project_name: this.project_name,
       project_code: this.project_code,
       project_manager: this.project_manager
-    },
+    };
+
+    axios.put(`${environment.apiUrl2}/superadmin/project/update/${this.project_uuid}`,
+      projectData,
+
     {
       headers: {
         Authorization: `Bearer ${this.cookieService.get('userToken')}`

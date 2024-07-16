@@ -45,7 +45,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form #divisionForm="ngForm">
+        <form #addDivisionForm="ngForm">
           <div class="mb-3">
             <label class="col-sm-3 col-form-label">Kode Divisi</label>
             <div class="col-sm-9">
@@ -60,10 +60,11 @@
                 name="division_title" required>
             </div>
           </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+            <button type="submit" (click)="addDivision()" [disabled]="addDivisionForm.invalid" class="btn btn-primary">Simpan</button>
+          </div>
         </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" (click)="addDivision()" class="btn btn-primary">Simpan</button>
       </div>
     </div>
   </div>
@@ -78,7 +79,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form #divisionForm="ngForm">
+        <form #editDivisionForm="ngForm">
           <div class="mb-3">
             <label class="col-sm-3 col-form-label">Kode Divisi</label>
             <div class="col-sm-9">
@@ -93,9 +94,10 @@
                 name="division_title" required>
             </div>
           </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+            <button type="submit" (click)="updateDivision()" class="btn btn-primary" [disabled]="editDivisionForm.invalid">Simpan Perubahan</button>
+          </div>
         </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" (click)="updateDivision()" class="btn btn-primary">Simpan</button>
       </div>
     </div>

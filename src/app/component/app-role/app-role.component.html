@@ -40,6 +40,7 @@
   </div>
 </div>
 
+<!-- add Otoritas -->
 <div class="modal fade" id="addAppRoleModal" tabindex="-1" aria-labelledby="addAppRoleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
@@ -48,7 +49,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form #appRoleForm="ngForm">
+        <form #addAppRoleForm="ngForm">
           <div class="mb-3">
             <div class="col-md-12">
               <label class="col-sm-6 col-form-label">Aplikasi</label>
@@ -69,15 +70,17 @@
               </select>
             </div>
           </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+            <button type="submit" (click)="addAppRole()" class="btn btn-primary" [disabled]="addAppRoleForm.invalid">Simpan</button>
+          </div>
         </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" (click)="addAppRole()" class="btn btn-primary">Simpan</button>
       </div>
     </div>
   </div>
 </div>
 
+<!-- edit Otorisasi -->
 <div class="modal fade" id="editAppRoleModal" tabindex="-1" aria-labelledby="editAppRoleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-lg">
     <div class="modal-content">
@@ -86,7 +89,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form #appRoleForm="ngForm">
+        <form #editAppRoleForm="ngForm">
           <div class="row">
             <div class="col-md-6">
               <label class="col-sm-3 col-form-label">Aplikasi</label>
@@ -107,10 +110,11 @@
                 </select>
             </div>
           </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+            <button type="submit" (click)="updateAppRole()" class="btn btn-primary" [disabled]="editAppRoleForm.invalid">Simpan Perubahan</button>
+          </div>
         </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" (click)="updateAppRole()" class="btn btn-primary">Simpan</button>
       </div>
     </div>
   </div>

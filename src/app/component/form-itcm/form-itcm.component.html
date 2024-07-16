@@ -207,7 +207,10 @@
                 name="name4-position">
             </div>
           </div>
-          <button type="button" class="btn btn-primary" (click)="addFormITCM()">Simpan</button>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+            <button type="submit" class="btn btn-primary" (click)="addFormITCM()">Simpan</button>
+          </div>
         </form>
       </div>
     </div>
@@ -270,7 +273,8 @@
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" (click)="updateFormITCM()">Simpan</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+        <button type="submit" class="btn btn-primary" (click)="updateFormITCM()">Simpan</button>
       </div>
     </div>
   </div>

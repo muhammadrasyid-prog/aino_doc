@@ -108,7 +108,7 @@
   </div>
 </div>
 
-
+<!-- add Ba Form -->
 <div class="modal fade" id="addModalBA" tabindex="-1" aria-labelledby="addModalBA" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-lg">
     <div class="modal-content">
@@ -117,7 +117,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form #addForm="ngForm">
+        <form #addBaForm="ngForm">
           <div class="row">
             <h2 class="mb-3 display-7 text-center"><strong>Data form</strong></h2>
             <div class="mb-3">
@@ -245,7 +245,10 @@
                 name="name4-position">
             </div>
           </div>
-            <button type="button" class="btn btn-primary" (click)="addBA()">Simpan</button>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+            <button type="submit" class="btn btn-primary" (click)="addBA()" [disabled]="addBaForm.invalid">Simpan</button>
+          </div>
           </div>
         </form>
       </div>
@@ -253,6 +256,7 @@
   </div>
 </div>
 
+<!-- edit Ba Form -->
 <div class="modal fade" id="updateModalBA" tabindex="-1" aria-labelledby="updateModalBA" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-lg">
     <div class="modal-content">
@@ -305,10 +309,11 @@
             <label class="form-label">Nama orang yang mendampingi</label>
             <input type="text" class="form-control" [(ngModel)]="didampingi_oleh" name="didampingi_oleh">
           </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+            <button type="submit" class="btn btn-primary" (click)="updateBA()" [disabled]="updateForm.invalid">Simpan</button>
+          </div>
         </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn-primary-click" (click)="updateBA()">Simpan</button>
       </div>
     </div>
   </div>

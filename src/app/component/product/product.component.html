@@ -41,7 +41,7 @@
 </div>
 
 <div class="modal fade" id="addProductModal" tabindex="-1" aria-labelledby="addProductModal" aria-hidden="true">
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="addProductModal">Tambah Produk</h5>
@@ -59,7 +59,10 @@
             <input type="text" class="form-control" id="productOwner" placeholder="Masukkan nama Owner"
               [(ngModel)]="product_owner" name="product_owner" required>
           </div>
-          <button type="submit" class="btn btn-primary" (click)="addProduct()">Simpan</button>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+            <button type="submit" class="btn btn-primary" (click)="addProduct()" [disabled]="formProduct.invalid">Simpan</button>
+          </div>
         </form>
       </div>
     </div>
@@ -68,7 +71,7 @@
 
 <!-- Edit Product modal -->
 <div class="modal fade" id="editProductModal" tabindex="-1" aria-labelledby="editProductModal" aria-hidden="true">
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="editProductModal">Edit Product</h5>
@@ -86,11 +89,11 @@
             <input type="text" class="form-control" id="ownerName" placeholder="Masukkan nama owner"
               [(ngModel)]="product_owner" name="product_owner" required>
           </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+            <button type="submit" class="btn btn-primary" (click)="updateProduct()" [disabled]="formProductEdit.invalid">Simpan Perubahan</button>
+          </div>
         </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" (click)="updateProduct()">Save changes</button>
       </div>
     </div>
   </div>

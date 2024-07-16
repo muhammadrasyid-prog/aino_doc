@@ -47,7 +47,7 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form #userForm="ngForm">
+          <form #addUserForm="ngForm">
             <div class="row">
               <div class="col-md-6">
                 <div class="mb-3">
@@ -140,10 +140,11 @@
                 </select>
               </div>
             </div>
+            <div class="modal-footer">  
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+              <button type="submit" (click)="addUser()" class="btn btn-primary" [disabled]="addUserForm.invalid">Simpan</button>
+            </div>
           </form> 
-        </div>
-        <div class="modal-footer">  
-          <button type="button" (click)="addUser()" class="btn btn-primary">Simpan</button>
         </div>
       </div>
     </div>
@@ -236,11 +237,11 @@
                 </select>
               </div>
             </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+              <button type="submit" (click)="updateUser()" class="btn btn-primary" [disabled]="editUserForm.invalid">Simpan Perubahan</button>
+            </div>
           </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" (click)="updateUser()" class="btn btn-primary">Simpan Perubahan</button>
         </div>
       </div>
     </div>

@@ -359,6 +359,7 @@ export class FormDAComponent implements OnInit {
         departemen: this.departemen,
         jenis_perubahan: this.jenis_perubahan,
         detail_dampak_perubahan: this.detail_dampak_perubahan,
+        rencana_pengembangan_perubahan: this.rencana_pengembangan_perubahan,
         rencana_pengujian_perubahan_sistem: this.rencana_pengujian_perubahan_sistem,
         rencana_rilis_perubahan_dan_implementasi: this.rencana_rilis_perubahan_dan_implementasi,
       },
@@ -405,7 +406,6 @@ export class FormDAComponent implements OnInit {
           title: 'SUCCESS',
           text: response.data.message
         })
-        $('#addModalFormITCM').modal('hide');
         this.fetchDataFormDA();
         this.fetchDataAdminFormDA();
         this.fetchDataUserFormDA();
@@ -420,6 +420,7 @@ export class FormDAComponent implements OnInit {
           })
         }
       });
+      $('#addModalFormDA').modal('hide');
   }
 
   getSpecificFormDA(form_uuid: string) {
@@ -470,6 +471,7 @@ export class FormDAComponent implements OnInit {
         departemen: this.departemen,
         jenis_perubahan: this.jenis_perubahan,
         detail_dampak_perubahan: this.detail_dampak_perubahan,
+        rencana_pengembangan_perubahan: this.rencana_pengembangan_perubahan,
         rencana_pengujian_perubahan_sistem: this.rencana_pengujian_perubahan_sistem,
         rencana_rilis_perubahan_dan_implementasi: this.rencana_rilis_perubahan_dan_implementasi,
       },
