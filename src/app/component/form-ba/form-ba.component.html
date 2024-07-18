@@ -2,7 +2,7 @@
 <div class="card">
   <div class="card-header d-flex justify-content-between align-items-center">
     <h3 class="mb-4">Daftar BA</h3>
-    <div>
+    <div *ngIf="role_code === 'A' || role_code === 'M'">
       <button class="btn btn-sm btn-outline-primary" (click)="openModalAddBA()"><i class="bi bi-plus"></i> Tambah
         BA</button>
     </div>
@@ -123,11 +123,11 @@
             <div class="mb-3">
               <label class="form-label">No. Tiket</label>
               <input type="text" class="form-control" name="form_ticket" placeholder="Masukkan Nomer Tiket"
-                [(ngModel)]="form_ticket">
+                [(ngModel)]="form_ticket" required>
             </div>
             <div class="mb-3">
               <label class="form-label">Pilih Project</label>
-              <select name="project_uuid" id="" class="form-select" [(ngModel)]="project_uuid">
+              <select name="project_uuid" id="" class="form-select" [(ngModel)]="project_uuid" required>
                 <option value="" disabled selected>Pilih Project</option>
                 <option *ngFor="let project of dataListAllProject" [value]="project.project_uuid">{{
                   project.project_name }}</option>
@@ -135,42 +135,42 @@
             </div>
             <div class="mb-3">
               <label class="form-label">Judul</label>
-              <input type="text" class="form-control" name="judul" placeholder="Masukkan Judul" [(ngModel)]="judul">
+              <input type="text" class="form-control" name="judul" placeholder="Masukkan Judul" [(ngModel)]="judul" required>
             </div>
             <div class="mb-3">
               <label class="form-label">Tanggal</label>
               <div class="input-group mb-3">
-                <input type="date" name="tanggal" id="" class="form-control" [(ngModel)]="tanggal">
+                <input type="date" name="tanggal" id="" class="form-control" [(ngModel)]="tanggal" required>
               </div>
             </div>
             <div class="mb-3">
               <label class="form-label">Nama Aplikasi</label>
               <div class="input-group mb-3">
-                <input type="text" name="tanggal" id="nama_aplikasi" class="form-control" placeholder="Masukkan Nama Aplikasi" [(ngModel)]="nama_aplikasi">
+                <input type="text" name="tanggal" id="nama_aplikasi" class="form-control" placeholder="Masukkan Nama Aplikasi" [(ngModel)]="nama_aplikasi" required>
               </div>
             </div>
             <div class="mb-3">
               <label class="form-label">No. DA</label>
               <div class="input-group mb-3">
-                <input type="text" name="tanggal" id="no_da" class="form-control" placeholder="Masukkan Nomor Form DA" [(ngModel)]="no_da">
+                <input type="text" name="tanggal" id="no_da" class="form-control" placeholder="Masukkan Nomor Form DA" [(ngModel)]="no_da" required>
               </div>
             </div>
             <div class="mb-3">
               <label class="form-label">No. ITCM</label>
               <div class="input-group mb-3">
-                <input type="text" name="tanggal" id="no_itcm" class="form-control" placeholder="Masukkan Nomor Form ITCM" [(ngModel)]="no_itcm">
+                <input type="text" name="tanggal" id="no_itcm" class="form-control" placeholder="Masukkan Nomor Form ITCM" [(ngModel)]="no_itcm" required>
               </div>
             </div>
             <div class="mb-3">
               <label class="form-label">Dilakukan Oleh</label>
               <div class="input-group mb-3">
-                <input type="text" name="tanggal" id="dilakukan_oleh" class="form-control" placeholder="Masukkan Nama Orang yang melakukan" [(ngModel)]="dilakukan_oleh">
+                <input type="text" name="tanggal" id="dilakukan_oleh" class="form-control" placeholder="Masukkan Nama Orang yang melakukan" [(ngModel)]="dilakukan_oleh" required>
               </div>
             </div>
             <div class="mb-3">
               <label class="form-label">Didampingi Oleh</label>
               <div class="input-group mb-3">
-                <input type="text" name="tanggal" id="didampingi_oleh" class="form-control" placeholder="Masukkan Nama Orang Pendamping" [(ngModel)]="didampingi_oleh">
+                <input type="text" name="tanggal" id="didampingi_oleh" class="form-control" placeholder="Masukkan Nama Orang Pendamping" [(ngModel)]="didampingi_oleh" required>
               </div>
             </div>
             
@@ -249,7 +249,7 @@
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
             <button type="submit" class="btn btn-primary" (click)="addBA()" [disabled]="addBaForm.invalid">Simpan</button>
           </div>
-          </div>
+         </div>
         </form>
       </div>
     </div>
@@ -311,7 +311,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-            <button type="submit" class="btn btn-primary" (click)="updateBA()" [disabled]="updateForm.invalid">Simpan</button>
+            <button type="submit" class="btn btn-primary" (click)="updateBA()" [disabled]="updateForm.invalid">Simpan Perubahan</button>
           </div>
         </form>
       </div>

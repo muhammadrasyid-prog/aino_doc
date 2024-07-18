@@ -2,7 +2,7 @@
 <div class="card">
   <div class="card-header d-flex justify-content-between align-items-center">
     <h3 class="mb-4">Daftar Formulir</h3>
-    <div>
+    <div *ngIf="role_code === 'A' || role_code === 'M'">
       <button class="btn btn-sm btn-outline-primary" (click)="openModalAddFormDA()"><i class="bi bi-plus"></i> Tambah
         Formulir</button>
     </div>
@@ -106,11 +106,11 @@
           <div class="mb-3">
             <label class="form-label">No. Tiket</label>
             <input type="text" class="form-control" name="form_ticket" placeholder="Masukkan Nomer Tiket"
-              [(ngModel)]="form_ticket">
+              [(ngModel)]="form_ticket" required>
           </div>
           <div class="mb-3">
             <label class="form-label">Pilih Project</label>
-            <select name="project_uuid" id="" class="form-select" [(ngModel)]="project_uuid">
+            <select name="project_uuid" id="" class="form-select" [(ngModel)]="project_uuid" required>
               <option value="" disabled selected>Pilih Project</option>
               <option *ngFor="let project of dataListAllProject" [value]="project.project_uuid">{{
                 project.project_name }}</option>
@@ -120,42 +120,42 @@
             <label class="form-label">
               Nama Analis</label>
             <input type="text" class="form-control" name="nama_analis" placeholder="Masukkan Nama Analis"
-              [(ngModel)]="nama_analis">
+              [(ngModel)]="nama_analis" required>
           </div>
           <div class="mb-3">
             <label class="form-label">Jabatan</label>
-            <input type="text" class="form-control" name="jabatan" placeholder="Masukkan Jabatan" [(ngModel)]="jabatan">
+            <input type="text" class="form-control" name="jabatan" placeholder="Masukkan Jabatan" [(ngModel)]="jabatan" required>
           </div>
           <div class="mb-3">
             <label class="form-label">Departemen</label>
             <input type="text" class="form-control" name="departemen" placeholder="Masukkan Nama Departemen"
-              [(ngModel)]="departemen">
+              [(ngModel)]="departemen" required>
           </div>
           <div class="mb-3">
             <label class="form-label">Jenis Perubahan</label>
             <input type="text" class="form-control" name="jenis_perubahan" placeholder="Masukkan Jenis Perubahan"
-              [(ngModel)]="jenis_perubahan">
+              [(ngModel)]="jenis_perubahan" required>
           </div>
           <div class="mb-3">
             <label class="form-label">Detail Dampak Perubahan</label>
             <input type="text" class="form-control" name="detail_dampak_perubahan"
-              placeholder="Masukkan Detail Dampak Perubahan" [(ngModel)]="detail_dampak_perubahan">
+              placeholder="Masukkan Detail Dampak Perubahan" [(ngModel)]="detail_dampak_perubahan" required>
           </div>
           <div class="mb-3">
             <label class="form-label">Rencana Pengembangan Perubahan</label>
             <input type="text" class="form-control" name="rencana_pengembangan_perubahan"
-              placeholder="Masukkan Rencana Pengembangan Perubahan" [(ngModel)]="rencana_pengembangan_perubahan">
+              placeholder="Masukkan Rencana Pengembangan Perubahan" [(ngModel)]="rencana_pengembangan_perubahan" required>
           </div>
           <div class="mb-3">
             <label class="form-label">Rencana Pengujian Perubahan Sistem</label>
             <input type="text" class="form-control" name="rencana_pengujian_perubahan_sistem"
-              placeholder="Masukkan Pengujian Perubahan Sistem" [(ngModel)]="rencana_pengujian_perubahan_sistem">
+              placeholder="Masukkan Pengujian Perubahan Sistem" [(ngModel)]="rencana_pengujian_perubahan_sistem" required>
           </div>
           <div class="mb-3">
             <label class="form-label">Rencana Rilis Perubahan dan Implementasi</label>
             <div class="input-group mb-3">
               <input type="date" name="rencana_rilis_perubahan_dan_implementasi" id="" class="form-control"
-                [(ngModel)]="rencana_rilis_perubahan_dan_implementasi">
+                [(ngModel)]="rencana_rilis_perubahan_dan_implementasi" required>
             </div>
           </div>
 
@@ -310,7 +310,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-            <button type="submit" class="btn btn-primary" (click)="updateFormDA()" [disabled]="editDaForm.invalid">Simpan</button>
+            <button type="submit" class="btn btn-primary" (click)="updateFormDA()" [disabled]="editDaForm.invalid">Simpan Perubahan</button>
           </div>
         </form>
       </div>

@@ -401,27 +401,29 @@ export class FormDAComponent implements OnInit {
       }
     )
       .then(response => {
+        this.fetchDataFormDA();
+        this.fetchDataAdminFormDA();
+        this.fetchDataUserFormDA();
         Swal.fire({
           icon: 'success',
           title: 'SUCCESS',
           text: response.data.message
         })
-        this.fetchDataFormDA();
-        this.fetchDataAdminFormDA();
-        this.fetchDataUserFormDA();
+        $('#addModalFormDA').modal('hide');
       })
       .catch(error => {
-        console.log(error.response.data.message);
-        if (error.response.status === 401 || error.response.status === 500 || error.response.status === 400) {
+        // console.log(error.response.data.message);
+        if (error.response.status === 500 || error.response.status === 400 || error.response.status === 422 || error.response.status === 404) {
           Swal.fire({
             icon: 'error',
             title: 'ERROR',
-            text: error.response.data.message
+            text: error.response.data.message,
+            confirmButtonText: 'OK'
           })
         }
       });
-      $('#addModalFormDA').modal('hide');
   }
+  
 
   getSpecificFormDA(form_uuid: string) {
     axios.get(`${environment.apiUrl2}/dampak/analisa/${form_uuid}`)
@@ -429,11 +431,13 @@ export class FormDAComponent implements OnInit {
         console.log(response);
         $('#updateModalDA').modal('show');
         const formData = response.data;
+        
         this.form_uuid = formData.form_uuid;
         this.form_number = formData.form_number;
         this.form_ticket = formData.form_ticket;
         this.form_status = formData.form_status;
         this.document_name = formData.document_name;
+        // this.project_uuid = formData.project_uuid;
         this.project_name = formData.project_name;
         this.nama_analis = formData.nama_analis;
         this.jabatan = formData.jabatan;
