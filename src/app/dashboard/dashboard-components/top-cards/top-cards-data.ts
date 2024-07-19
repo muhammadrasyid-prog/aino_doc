@@ -4,6 +4,7 @@ export interface topcard {
     title: string;
     href: string;
     subtitle: string | number;
+    text: string;
 }
 
 export const topcards: topcard[] = [
@@ -13,6 +14,7 @@ export const topcards: topcard[] = [
         title: 'Form DA',
         href: '/main/component/form-da',
         subtitle: 0,
+        text: 'Formulir Dampak Analisa',
     },
     {
         bgcolor: 'danger',
@@ -20,6 +22,7 @@ export const topcards: topcard[] = [
         title: 'Form ITCM',
         href: '/main/component/form-itcm',
         subtitle: 0,
+        text: 'Formulir IT Change Management',
     },
     {
         bgcolor: 'warning',
@@ -27,6 +30,7 @@ export const topcards: topcard[] = [
         title: 'BA ITCM',
         href: '/main/component/ba-itcm',
         subtitle: 0,
+        text: 'Formulir Berita Acara IT Change Management',
     },
     {
         bgcolor: 'info',
@@ -34,5 +38,6 @@ export const topcards: topcard[] = [
         title: 'Hak Akses',
         href: '/main/component/hak-akses',
         subtitle: '',
+        text: 'Hak Akses',
     },
 ];
