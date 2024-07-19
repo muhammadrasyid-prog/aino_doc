@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, HostListener } from '@angular/core';
 import { FormBaService } from '../component-service/form-ba-servie/form-ba-service.service';
 import { FormBuilder, FormControl, FormGroup, FormGroupDirective } from '@angular/forms';
 import axios from 'axios';
@@ -134,6 +134,8 @@ export class FormBAComponent implements OnInit {
 
   dataListAllUser: Users[] = [];
 
+  private isModalOpen: boolean = false;
+
   matchesSearch(item: formsBA): boolean {
     const searchText = this.searchText.toLowerCase();
 
@@ -261,8 +263,25 @@ export class FormBAComponent implements OnInit {
       });
   }
 
+  @HostListener('window:popstate', ['$event'])
+  onPopState(event: Event) {
+  const modals = ['#addModalBA', '#updateModalBA', '#detailModalBA'];
+
+  for (const modalId of modals) {
+    const modal = $(modalId);
+    if (modal.hasClass('show')) {
+      modal.modal('hide');
+      event.preventDefault(); // Prevent default back navigation behavior
+      history.pushState(null, '', location.href); // Keep current URL state
+      this.isModalOpen = false;
+      break;
+    }
+  }
+}
+
   openModalAddBA() {
     $('#addModalBA').modal('show');
+    history.pushState(null, '', location.href); // Keep current URL state
     this.fetchAllDataBA();
   }
 

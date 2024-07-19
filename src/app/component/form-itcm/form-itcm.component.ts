@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, OnDestroy, HostListener } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, FormGroupDirective } from '@angular/forms';
 import axios from 'axios';
 import { CookieService } from 'ngx-cookie-service';
@@ -120,6 +120,7 @@ export class FormITCMComponent implements OnInit {
   is_sign4: boolean = false;
   is_sign5: boolean = false;
 
+  private isModalOpen: boolean = false;
 
   constructor(
     private cookieService: CookieService,
@@ -141,6 +142,22 @@ export class FormITCMComponent implements OnInit {
     this.fetchAllProject();
     this.fetchDocumentUUID();
   }
+
+  @HostListener('window:popstate', ['$event'])
+  onPopState(event: Event) {
+  const modals = ['#addModalFormITCM', '#updateModalITCM', '#detailModalITCM'];
+
+  for (const modalId of modals) {
+    const modal = $(modalId);
+    if (modal.hasClass('show')) {
+      modal.modal('hide');
+      event.preventDefault(); // Prevent default back navigation behavior
+      history.pushState(null, '', location.href); // Ensure URL remains the same
+      this.isModalOpen = false; // Update modal state
+      break;
+    }
+  }
+}
 
   dataListDocument: Documents[] = [];
   dataListProject: Projects[] = [];
@@ -244,10 +261,6 @@ export class FormITCMComponent implements OnInit {
       });
   }
 
-  openModalAddFormITCM() {
-    $('#addModalFormITCM').modal('show');
-  }
-
   fetchAllUser() {
     axios.get(`${this.apiUrl}/personal/name/all`)
       .then(response => {
@@ -276,6 +289,11 @@ export class FormITCMComponent implements OnInit {
       .catch(error => {
         console.log(error.response.data.message);
       });
+  }
+
+  openModalAddFormITCM() {
+    $('#addModalFormITCM').modal('show');
+    history.pushState(null, '', location.href); // Keep current URL state
   }
 
   addFormITCM() {
@@ -345,7 +363,7 @@ export class FormITCMComponent implements OnInit {
             text: error.response.data.message,
             icon: 'error',
             confirmButtonText: 'OK'
-          })
+          })  
         }
       });
   }

@@ -91,6 +91,7 @@ export class MasterDocComponent implements OnInit {
 
   openAddDocModal() {
     $('#addDocModal').modal('show');
+    history.pushState(null, '', location.href); // Keep current URL state
     this.document_code = '';
     this.document_name = '';
   }
